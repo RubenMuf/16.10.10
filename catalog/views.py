@@ -108,8 +108,8 @@ def registr(req):
             k3 = anketa.cleaned_data.get('first_name')
             k4 = anketa.cleaned_data.get('last_name')
             k5 = anketa.cleaned_data.get('email')
-            user = authenticate(username=k1, password=k2) #сохраняет нового пользоватлея
-            man = User.objects.get(username=k1)             #найдем нового юзера
+            user = authenticate(username=k1, password=k2) # сохраняет нового пользоватлея
+            man = User.objects.get(username=k1)             # найдем нового юзера
             #заполним поля в таблице
             man.first_name = k3
             man.last_name = k4
@@ -117,7 +117,7 @@ def registr(req):
             man.save()
             login(req, user)
             group = Group.objects.get(id=1) # находим бесплатную подписку
-            group.user_set.add(man) # записываем нового пользователя в подписку
+            group.user_set.add(man) # записываем нового пользователя в подписку, связываем две таблицы
             return redirect('home') # входит на сайт
     else:
         anketa = SignUpform()

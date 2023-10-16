@@ -35,7 +35,17 @@ urlpatterns = [
     path('status/prosmotr/<int:id1>/<int:id2>/<int:id3>', views.prosmotr, name='prosmotr'),
     path('status/buy/<int:type>/', views.buy, name='buystatus'),
     path('user/registr/', views.registr, name='registr'),
+
     path('status/purchase/', views.purchase, name='purchase'),
     path('status/del/<int:t1>/', views.del_, name='del_'),
     path('status/app/<int:type_>/', views.app_, name='app_')
+
+
 ]
+'''
+login
+reset_form
+reset_done
+reset_confirm
+reset_complete
+'''
