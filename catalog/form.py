@@ -1,6 +1,9 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+from django.db import models
+
+from catalog.models import Kino
 
 
 class SignUpform(UserCreationForm):
@@ -23,3 +26,6 @@ class Podpiska(forms.Form):
     list_req = (('Бесплатная', 'Бесплатная'), ('Базовая', 'Базовая'), ('Супер', 'Супер'))
     month = forms.TypedChoiceField(label='Выбрать подписку:', choices=list_req)
 
+class FormaKino(forms.Form):
+    all = Kino.objects.all()
+    name = forms.CharField(label='Введите название фильма')

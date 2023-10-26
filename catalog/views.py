@@ -91,7 +91,7 @@ def buy(req, type):
     data = {'podpiska': k1}
     return render(req, 'buy.html', data)
 
-from .form import SignUpform, Podpiska
+from .form import SignUpform, Podpiska, FormaKino
 from django.contrib.auth import authenticate, login
 
 
@@ -185,6 +185,25 @@ def app_(req, type_):
     k1 = grnew.name
     data = {'podpiska': k1}
     return render(req, 'buy.html', data)
+
+def search(req):
+    title = 'Такого фильма нет в списке.'
+    kino = ''
+    anketa = FormaKino()
+    # print(baza)
+    # сбор данных от пользователя
+    if req.POST:  # как только нажали на кнопку submit начинается процесс
+        a = req.POST['name'] # собираем данные в переменные из полей формы на странице
+        kino = Kino.objects.filter(title=a)
+        print(kino.get() in Kino.objects.all())
+        if kino.get() in Kino.objects.all():
+            print(kino.all(), '/////')
+            print(a)
+            title = 'Такой фильм есть в списке: '
+        # print(a, b, '######################################') # проверка кода
+    data = {'title':title, 'kino': kino.get(), 'forma': anketa}
+    return render(req, 'search.html', context=data)
+
 
 # def registr(req):
 #     print(1)

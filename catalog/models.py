@@ -76,3 +76,4 @@ class Kino(models.Model):
 
     def get_absolute_url(self): # автоматически формировка пути
         return reverse('info_movie', args=[self.id, self.title])
+

@@ -38,7 +38,9 @@ urlpatterns = [
 
     path('status/purchase/', views.purchase, name='purchase'),
     path('status/del/<int:t1>/', views.del_, name='del_'),
-    path('status/app/<int:type_>/', views.app_, name='app_')
+    path('status/app/<int:type_>/', views.app_, name='app_'),
+
+    path('search/', views.search, name='search')
 
 
 ]
